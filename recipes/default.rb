@@ -112,7 +112,11 @@ template "#{home}/config.inc.php" do
 	mode 00644
 end
 
-if (node['phpmyadmin'].attribute?('fpm') && node['phpmyadmin']['fpm'])
+fpm = false
+if node['phpmyadmin'].attribute?('fpm')
+	fpm = (not node['phpmyadmin']['fpm'].to_s.downcase.match(%r/^(true|1|enable|yes|activ)/).nil?)
+end
+if fpm
  	php_fpm 'phpmyadmin' do
 	  action :add
 	  user user
