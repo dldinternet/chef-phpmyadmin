@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of phpmyadmin.
 
+## 1.1.1
+
+* Set the Apache2 webserver default
+
 ## 1.1.0
 
 * Set up the Apache2 site configuration

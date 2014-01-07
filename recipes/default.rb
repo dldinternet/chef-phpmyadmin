@@ -138,10 +138,11 @@ if fpm
 	end
 end
 
-if node['phpmyadmin']['webserver'] == "nginx"
+case node['phpmyadmin']['webserver']
+when "nginx"
 	include_recipe "phpmyadmin::nginx"
-end
-
-if node['phpmyadmin']['webserver'] == "apache2"
+when "apache2"
 	include_recipe "phpmyadmin::apache2"
+else
+	Chef::Log.warn "NO webserver set"
 end
