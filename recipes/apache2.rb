@@ -1,12 +1,12 @@
 include_recipe "apache2"
 
-web_app node[:phpmyadmin][:apache2][:site_config] do
+web_app node[:phpmyadmin][:apache2][:site] do
 	docroot node[:phpmyadmin][:home]
 	template node[:phpmyadmin][:apache2][:template]
 	cookbook node[:phpmyadmin][:apache2][:cookbook] unless node[:phpmyadmin][:apache2][:cookbook].nil?
 end
 
-link "#{node[:apache][:dir]}/sites-available/#{node[:phpmyadmin][:apache2][:site]}" do
+link "#{node[:apache][:dir]}/sites-available/#{node[:phpmyadmin][:apache2][:site]}.conf" do
 	action :create
       to "#{node[:phpmyadmin][:apache2][:site_config]}"
 end
