@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of phpmyadmin.
 
+## 1.1.0
+
+* Set up the Apache2 site configuration
+
 ## 1.0.9
 
 * Don't hijack the user account chosen to own phpmyadmin files

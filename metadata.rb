@@ -14,10 +14,9 @@ recommends        'apache2'
 suggests          'percona'
 suggests          'mysql'
 
-supports          'ubuntu', '>= 12.04'
-supports          'debian', '>= 6.0'
-supports          'centos', '>= 6.0'
-supports          'redhat', '>= 9.0'
+%w{ debian ubuntu centos redhat fedora scientific amazon }.each do |os|
+	supports os
+end
 
 attribute 'phpmyadmin/version',
   :display_name => 'PHPMyAdmin version',
@@ -101,3 +100,38 @@ attribute 'phpmyadmin/query_history_size',
   :display_name => 'PHPMyAdmin query history size',
   :description => 'Set the maximum size of the Javascript query history',
   :default => '100'
+
+attribute 'phpmyadmin/nginx_port',
+  :display_name => 'NGINX port',
+  :description => 'The listening port number for NGINX server',
+  :default => '80'
+
+attribute 'phpmyadmin/nginx_server_name',
+  :display_name => 'NGINX server name',
+  :description => 'The server name for NGINX server',
+  :default => 'phpmyadmin.yourhost.com'
+
+attribute 'phpmyadmin/nginx_docroot',
+  :display_name => 'NGINX document root',
+  :description => 'The documen root for NGINX server',
+  :default => 'phpmyadmin/home'
+
+attribute 'phpmyadmin/nginx_fastcgi_server',
+  :display_name => 'NGINX fast CGI server socket',
+  :description => 'The server socket for NGINX FastCGI server',
+  :default => 'unix:/dev/shm/php5-fpm.sock'
+
+attribute 'phpmyadmin/apache2_site_config',
+  :display_name => 'Apache2 site config file',
+  :description => 'The Apache2 site config file',
+  :default => '/etc/httpd/conf.d/phpMyAdmin.conf'
+
+attribute 'phpmyadmin/apache2_site',
+  :display_name => 'Apache2 site symbolic name',
+  :description => 'The Apache2 site config name which is used to defind the .conf holding the virtual host config',
+  :default => 'phpmyadmin'
+
+attribute 'phpmyadmin/apache2_site_enable',
+  :display_name => 'Apache2 site enable flag',
+  :description => 'The flag controlling if the virtual host is enabled',
+  :default => 'true'

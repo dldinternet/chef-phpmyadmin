@@ -46,3 +46,13 @@ default['phpmyadmin']['default_lang'] = 'en'
 default['phpmyadmin']['default_display'] = 'horizontal'
 default['phpmyadmin']['query_history'] = true
 default['phpmyadmin']['query_history_size'] = 100
+
+
+default[:phpmyadmin][:nginx][:port]           =   80
+default[:phpmyadmin][:nginx][:server_name]    =   'phpmyadmin.yourhost.com'
+default[:phpmyadmin][:nginx][:docroot]        =   default[:phpmyadmin][:cfg][:path]
+default[:phpmyadmin][:nginx][:fastcgi_server] =   'unix:/dev/shm/php5-fpm.sock'
+
+default[:phpmyadmin][:apache2][:site_config]  =   '/etc/httpd/conf.d/phpMyAdmin.conf'
+default[:phpmyadmin][:apache2][:site]         =   "phpmyadmin"
+default[:phpmyadmin][:apache2][:site_enable]  =   true
