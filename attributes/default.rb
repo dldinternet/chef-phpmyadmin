@@ -36,7 +36,7 @@ case node['platform_family']
 when 'debian'
   default['phpmyadmin']['upload_dir'] = '/var/lib/php5/uploads'
   default['phpmyadmin']['save_dir'] = '/var/lib/php5/uploads'
-when 'rhel'
+else # CentOS, RedHat, Fedora, Amazon, etc.
   default['phpmyadmin']['upload_dir'] = '/var/lib/php/uploads'
   default['phpmyadmin']['save_dir'] = '/var/lib/php/uploads'
 end
