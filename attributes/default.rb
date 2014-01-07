@@ -21,11 +21,11 @@ default['phpmyadmin']['version'] = '4.1.3'
 default['phpmyadmin']['checksum'] = '35a94cded20f72360129a8ef83e34303'
 default['phpmyadmin']['mirror'] = 'http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin'
 
-default['phpmyadmin']['fpm'] = true
+default['phpmyadmin']['fpm']    = true
 
-default['phpmyadmin']['home'] = '/opt/phpmyadmin'
-default['phpmyadmin']['user'] = 'phpmyadmin'
-default['phpmyadmin']['group'] = 'phpmyadmin'
+default['phpmyadmin']['home']   = '/opt/phpmyadmin'
+default['phpmyadmin']['user']   = 'phpmyadmin'
+default['phpmyadmin']['group']  = 'phpmyadmin'
 default['phpmyadmin']['socket'] = '/tmp/phpmyadmin.sock'
 
 if Chef::Config[:solo]
@@ -35,17 +35,17 @@ end
 case node['platform_family']
 when 'debian'
   default['phpmyadmin']['upload_dir'] = '/var/lib/php5/uploads'
-  default['phpmyadmin']['save_dir'] = '/var/lib/php5/uploads'
+  default['phpmyadmin']['save_dir']   = '/var/lib/php5/uploads'
 else # CentOS, RedHat, Fedora, Amazon, etc.
   default['phpmyadmin']['upload_dir'] = '/var/lib/php/uploads'
-  default['phpmyadmin']['save_dir'] = '/var/lib/php/uploads'
+  default['phpmyadmin']['save_dir']   = '/var/lib/php/uploads'
 end
-default['phpmyadmin']['maxrows'] = 100
-default['phpmyadmin']['protect_binary'] = 'blob'
-default['phpmyadmin']['default_lang'] = 'en'
-default['phpmyadmin']['default_display'] = 'horizontal'
-default['phpmyadmin']['query_history'] = true
-default['phpmyadmin']['query_history_size'] = 100
+default['phpmyadmin']['maxrows']              = 100
+default['phpmyadmin']['protect_binary']       = 'blob'
+default['phpmyadmin']['default_lang']         = 'en'
+default['phpmyadmin']['default_display']      = 'horizontal'
+default['phpmyadmin']['query_history']        = true
+default['phpmyadmin']['query_history_size']   = 100
 
 default['phpmyadmin']['webserver']            = "apache2"
 default[:phpmyadmin][:nginx][:port]           = 80
@@ -54,5 +54,7 @@ default[:phpmyadmin][:nginx][:docroot]        = default[:phpmyadmin][:cfg][:path
 default[:phpmyadmin][:nginx][:fastcgi_server] = 'unix:/dev/shm/php5-fpm.sock'
 
 default[:phpmyadmin][:apache2][:site_config]  = '/etc/httpd/conf.d/phpMyAdmin.conf'
+default[:phpmyadmin][:apache2][:template]     = 'etc/httpd/conf.d/phpMyAdmin.conf.erb'
+#default[:phpmyadmin][:apache2][:cookbook]     = 'phpmyadmin'
 default[:phpmyadmin][:apache2][:site]         = "phpmyadmin"
 default[:phpmyadmin][:apache2][:site_enable]  = true

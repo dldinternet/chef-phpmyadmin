@@ -101,6 +101,11 @@ attribute 'phpmyadmin/query_history_size',
   :description => 'Set the maximum size of the Javascript query history',
   :default => '100'
 
+attribute 'phpmyadmin/webserver',
+  :display_name => 'The webserver to use to serve phpmyadmin [:apache2, :nginx]',
+  :description => 'The webserver to use to serve phpmyadmin [:apache2, :nginx]',
+  :default => 'apache2'
+
 attribute 'phpmyadmin/nginx_port',
   :display_name => 'NGINX port',
   :description => 'The listening port number for NGINX server',
