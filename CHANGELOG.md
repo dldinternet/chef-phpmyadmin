@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of phpmyadmin.
 
+## 1.0.9
+
+* Don't hijack the user account chosen to own phpmyadmin files
+
 ## 1.0.8
 
 * Allow check for FPM to accept 'yes', 'enable[d]', 1 and 'active'
