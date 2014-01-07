@@ -18,7 +18,7 @@
 #
 
 default['phpmyadmin']['version'] = '4.1.3'
-default['phpmyadmin']['checksum'] = '35a94cded20f72360129a8ef83e34303'
+default['phpmyadmin']['checksum'] = '6843953b09babd392a48f85e7afb5ac6826bd7e2fd1c8e0c15456f42060386dc'
 default['phpmyadmin']['mirror'] = 'http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin'
 
 default['phpmyadmin']['fpm']    = true
